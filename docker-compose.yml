@@ -1,13 +1,11 @@
-version: "3.8"
-
 services:
   postgres:
     image: postgres:15
     container_name: pgdb
     environment:
-      POSTGRES_USER: hari
-      POSTGRES_PASSWORD: hari123
-      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Hari1818
+      POSTGRES_DB: studentDB
     ports:
       - "5432:5432"
     volumes:
@@ -19,9 +17,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydb
-      SPRING_DATASOURCE_USERNAME: hari
-      SPRING_DATASOURCE_PASSWORD: hari123
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/studentDB
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Hari1818
     depends_on:
       - postgres
 

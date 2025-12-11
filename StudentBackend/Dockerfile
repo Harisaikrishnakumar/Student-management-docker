@@ -1,20 +1,12 @@
-# ===== BACKEND BUILD STAGE =====
-FROM maven:3.9-eclipse-temurin-17 AS build
+# -------- BACKEND STAGE 1: Build Stage --------
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
-
-# Copy backend source code
 COPY . .
-
-# Build Spring Boot JAR
 RUN mvn clean package -DskipTests
 
-# ===== RUNTIME STAGE =====
+# -------- BACKEND STAGE 2: Run Stage --------
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
-
-# Copy the JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
-
 EXPOSE 8080
-
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
