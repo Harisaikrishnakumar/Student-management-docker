@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Student Management System</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <h1>Student Management System</h1>
+</header>
+
+<main class="main-wrap">
+
+    <!-- Add student card -->
+    <section class="card add-card" aria-labelledby="addTitle">
+        <h2 id="addTitle">Add Student</h2>
+
+        <form id="addForm" class="grid-form" onsubmit="event.preventDefault(); addStudent();">
+            <input id="rollno" type="number" placeholder="Roll Number" required>
+            <input id="name" type="text" placeholder="Student Name" required>
+
+            <input id="email" type="email" placeholder="Email">
+            <input id="age" type="number" placeholder="Age">
+
+            <input id="branch" type="text" placeholder="Branch">
+            <input id="college" type="text" placeholder="College">
+
+            <div class="form-actions">
+                <button class="primary-btn" type="submit">Add Student</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Students header + count -->
+    <section class="table-header">
+        <h2>All Students</h2>
+        <div class="count-pill">Total: <span id="studentCount">0</span></div>
+    </section>
+
+    <!-- Table card -->
+    <section class="card table-card" aria-labelledby="tableTitle">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Branch</th>
+                <th>College</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="studentTableBody">
+            <!-- filled by JS -->
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<!-- Update Modal (centered) -->
+<div id="updateModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-panel" role="document">
+        <h3>Update Student</h3>
+        <form id="updateForm">
+            <input type="hidden" id="updateId">
+            <input id="updateRollno" type="number" placeholder="Roll Number" required>
+            <input id="updateName" type="text" placeholder="Student Name" required>
+            <input id="updateEmail" type="email" placeholder="Email">
+            <input id="updateAge" type="number" placeholder="Age">
+            <input id="updateBranch" type="text" placeholder="Branch">
+            <input id="updateCollege" type="text" placeholder="College">
+
+            <div class="modal-actions">
+                <button type="submit" class="primary-btn">Save</button>
+                <button type="button" class="ghost-btn" onclick="closeModal()">Cancel</button>
+            </div>
+        </form>
+        <button class="modal-close" aria-label="Close" onclick="closeModal()">✕</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
